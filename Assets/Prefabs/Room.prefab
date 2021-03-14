@@ -1827,11 +1827,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f9f5e1220127d4b800848d914dd09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpDoor: {fileID: 4257407167658897453}
-  RightDoor: {fileID: 4257407167643133455}
-  DownDoor: {fileID: 4257407167930484419}
-  LeftDoor: {fileID: 4257407169065907241}
-  Ladder: {fileID: 4257407167482109567}
+  upDoor: {fileID: 4257407167658897453}
+  rightDoor: {fileID: 4257407167643133455}
+  downDoor: {fileID: 4257407167930484419}
+  leftDoor: {fileID: 4257407169065907241}
+  ladder: {fileID: 4257407167482109567}
 --- !u!1 &4257407168615106601
 GameObject:
   m_ObjectHideFlags: 0

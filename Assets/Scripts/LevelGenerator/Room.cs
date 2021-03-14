@@ -1,43 +1,50 @@
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class Room : BaseRoom
 {
-    public enum Door
-    {
-        Up,
-        Right,
-        Down,
-        Left
-    }
-
-    public GameObject UpDoor;
-    public GameObject RightDoor;
-    public GameObject DownDoor;
-    public GameObject LeftDoor;
-    public GameObject Ladder;
+    [SerializeField] private GameObject upDoor;
+    [SerializeField] private GameObject rightDoor;
+    [SerializeField] private GameObject downDoor;
+    [SerializeField] private GameObject leftDoor;
+    [SerializeField] private GameObject ladder;
 
     private void Awake()
     {
-        Ladder.SetActive(false);
+        ladder.SetActive(false);
     }
 
-    public void SetDoorState(Door door, bool closed)
+    public override void SetDoorState(Door door, bool closed)
     {
+        if (!HasDoor(door))
+            return;
+
         switch (door)
         {
             case Door.Up:
-                UpDoor.SetActive(closed);
-                Ladder.SetActive(!closed);
+                upDoor.SetActive(closed);
+                ladder.SetActive(!closed);
                 break;
             case Door.Right:
-                RightDoor.SetActive(closed);
+                rightDoor.SetActive(closed);
                 break;
             case Door.Down:
-                DownDoor.SetActive(closed);
+                downDoor.SetActive(closed);
                 break;
             case Door.Left:
-                LeftDoor.SetActive(closed);
+                leftDoor.SetActive(closed);
                 break;
         }
+    }
+
+    public override bool HasDoor(Door door)
+    {
+        return door switch
+        {
+            Door.Up => upDoor != null,
+            Door.Right => rightDoor != null,
+            Door.Down => downDoor != null,
+            Door.Left => leftDoor != null,
+            _ => false
+        };
     }
 }
